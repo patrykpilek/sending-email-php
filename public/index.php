@@ -20,6 +20,7 @@ $mail->SMTPAuth = true;
 $mail->Username = Config::SMTP_USER;
 $mail->Password = Config::SMTP_PASSWORD;
 $mail->SMTPSecure = 'tls';
+$mail->CharSet = 'UTF-8';
 
 /**
  * Send an email
@@ -27,13 +28,8 @@ $mail->SMTPSecure = 'tls';
 $mail->setFrom('sender@example.com');
 $mail->addAddress('patryk.pilek@gmail.com');
 
-
-// Add a different reply to address
-$mail->addReplyTo('patryk.pilek@gmail.com', 'Patryk');
-
-
-$mail->Subject = 'An email sent from PHP';
-$mail->Body = 'This is a test message';
+$mail->Subject = '¿Qué tal estás?';
+$mail->Body    = '¡Hola! ¡Se envió este correo desde PHP!';
 
 if ($mail->send()) {
 	echo 'Message sent!';
