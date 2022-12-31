@@ -13,6 +13,8 @@
   - send an email to multiple recipients using To, CC and Bcc
   - send an email with a different address for replies
   - send email containing non-english characters
+  - [Maximum email size limits](https://www.outlook-apps.com/maximum-email-size/)
+  - send email with a file attachment
 - [ ] using HTML and CSS to add formatting to your emails
 - [ ] sending emails asynchronously: build a basic asynchronous queue from scratch
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
