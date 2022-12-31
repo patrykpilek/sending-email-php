@@ -31,7 +31,7 @@ $mail->addAddress('patryk.pilek@gmail.com');
 $mail->Subject = 'An email sent from PHP';
 $mail->Body = 'Please find a file attached.';
 
-$mail->addAttachment(dirname(__FILE__) . '/example.pdf');
+$mail->addAttachment(dirname(__FILE__) . '/example.pdf', 'sample.pdf');
 
 if ($mail->send()) {
 	echo 'Message sent!';
