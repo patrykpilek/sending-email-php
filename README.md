@@ -10,6 +10,7 @@
   - put configuration settings in a separate file
 - [ ] how to use PHPMailer to send emails
   - add a name to an email address
+  - send an email to multiple recipients using To, CC and Bcc
 - [ ] using HTML and CSS to add formatting to your emails
 - [ ] sending emails asynchronously: build a basic asynchronous queue from scratch
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server

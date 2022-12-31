@@ -24,8 +24,21 @@ $mail->SMTPSecure = 'tls';
 /**
  * Send an email
  */
-$mail->setFrom('no-replay@patrykpilek.com', 'Patryk Pilek');
-$mail->addAddress('patryk.pilek@gmail.com', 'Dave');
+$mail->setFrom('no-replay@patrykpilek.com');
+$mail->addAddress('patryk.pilek@gmail.com');
+
+// Multiple "To" addresses
+$mail->addAddress('lpilek19@googlemail.com', 'Lukasz Pilek');
+$mail->addAddress('lpilek19@googlemail.com');
+
+// "Cc" addresses
+$mail->addCC('patryk.pilek@gmail.com', 'Patryk');
+$mail->addCC('patryk.pilek@gmail.com');
+
+// "Bcc" addresses
+$mail->addBCC('lpilek19@googlemail.com');
+$mail->addBCC('patryk.pilek@gmail.com');
+
 
 $mail->Subject = 'An email sent from PHP';
 $mail->Body = 'This is a test message';
