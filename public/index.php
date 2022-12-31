@@ -4,6 +4,7 @@
  * PHPMailer Autoloader
  */
 require '../vendor/autoload.php';
+require '../classes/Config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -13,11 +14,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 $mail = new PHPMailer();
 
 $mail->isSMTP();
-$mail->Host = 'mail.example.com';
-$mail->Port = 587;
+$mail->Host = Config::SMTP_HOST;
+$mail->Port = Config::SMTP_PORT;
 $mail->SMTPAuth = true;
-$mail->Username = 'sender@example.com';
-$mail->Password = 'secret';
+$mail->Username = Config::SMTP_USER;
+$mail->Password = Config::SMTP_PASSWORD;
 $mail->SMTPSecure = 'tls';
 
 /**
