@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPMailer Autoloader
+ * Include external classes
  */
 require '../vendor/autoload.php';
 require '../classes/Config.php';
@@ -9,7 +9,7 @@ require '../classes/Config.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 /**
- * Configure PHPMailer with your SMTP server settings
+ * Configure PHPMailer
  */
 $mail = new PHPMailer();
 
@@ -22,20 +22,16 @@ $mail->Password = Config::SMTP_PASSWORD;
 $mail->SMTPSecure = 'tls';
 
 /**
- * Enable SMTP debug messages
- */
-$mail->SMTPDebug = 2;
-
-/**
  * Send an email
  */
-$mail->setFrom('sender@example.com');
-$mail->addAddress('recipient@example.com');
+$mail->setFrom('no-replay@patrykpilek.com', 'Patryk Pilek');
+$mail->addAddress('patryk.pilek@gmail.com', 'Dave');
+
+$mail->Subject = 'An email sent from PHP';
 $mail->Body = 'This is a test message';
 
 if ($mail->send()) {
-    echo 'Message sent!';
+	echo 'Message sent!';
 } else {
     echo 'Mailer error: ' . $mail->ErrorInfo;
 }
-
