@@ -24,20 +24,12 @@ $mail->SMTPSecure = 'tls';
 /**
  * Send an email
  */
-$mail->setFrom('no-replay@patrykpilek.com');
+$mail->setFrom('sender@example.com');
 $mail->addAddress('patryk.pilek@gmail.com');
 
-// Multiple "To" addresses
-$mail->addAddress('lpilek19@googlemail.com', 'Lukasz Pilek');
-$mail->addAddress('lpilek19@googlemail.com');
 
-// "Cc" addresses
-$mail->addCC('patryk.pilek@gmail.com', 'Patryk');
-$mail->addCC('patryk.pilek@gmail.com');
-
-// "Bcc" addresses
-$mail->addBCC('lpilek19@googlemail.com');
-$mail->addBCC('patryk.pilek@gmail.com');
+// Add a different reply to address
+$mail->addReplyTo('patryk.pilek@gmail.com', 'Patryk');
 
 
 $mail->Subject = 'An email sent from PHP';
