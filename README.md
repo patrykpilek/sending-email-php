@@ -20,6 +20,14 @@
   - format the body of an email using HTML
   - insert an image into the body of an email
   - add style to the HtML in an email using CSS
+  - [Universally supported CSS and HTML for email designs](http://pinpointe.com/blog/email-campaign-html-and-css-support/)
+  - [CSS support guide for email clients](https://www.campaignmonitor.com/css/)
+  - [Email testing](https://www.litmus.com/)
+  - [Email testing and analytics](https://www.emailonacid.com/)
+  - [Free email templates](https://www.campaignmonitor.com/email-templates/)
+  - add a Plain-text version of an HTML email
+  - [HTML to Text email converter](https://templates.mailchimp.com/resources/html-to-text/)
+  - [PHP strip_tags function](https://www.php.net/manual/en/function.strip-tags.php)
 - [ ] sending emails asynchronously: build a basic asynchronous queue from scratch
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
 - [ ] third-party email services: using mailgun
