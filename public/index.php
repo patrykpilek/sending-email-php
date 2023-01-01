@@ -31,7 +31,13 @@ $mail->setFrom('sender@example.com');
 $mail->addAddress('patryk.pilek@gmail.com');
 
 $mail->Subject = 'An email sent from PHP';
-$mail->Body    = '<h1>Hello!</h1> <p>This <strong>email</strong> has been sent from PHP!</p>';
+$mail->Body = '<h2>External Image</h2>'
+             . '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/265px-Red_Apple.jpg">'
+             . "\n"
+             . '<h2>Embedded Image</h2>'
+             . '<img src="cid:banana">';
+
+$mail->AddEmbeddedImage(dirname(__FILE__) . '/banana.png', 'banana');
 
 if ($mail->send()) {
 	echo 'Message sent!';

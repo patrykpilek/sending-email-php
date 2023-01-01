@@ -18,6 +18,7 @@
   - send an email with a file attachment and change the filename
 - [ ] using HTML and CSS to add formatting to your emails
   - format the body of an email using HTML
+  - insert an image into the body of an email
 - [ ] sending emails asynchronously: build a basic asynchronous queue from scratch
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
 - [ ] third-party email services: using mailgun
