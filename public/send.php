@@ -7,11 +7,9 @@ $start_time = microtime(true);
 
 
 /**
- * Include external classes
+ * Composer autoloader
  */
 require '../vendor/autoload.php';
-require '../classes/Config.php';
-require '../classes/Queue.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -26,6 +24,8 @@ $mail->addAddress('patryk.pilek@gmail.com');
 $mail->Subject = 'An email sent from PHP';
 $mail->Body = 'This is a test message';
 
+
+
 /**
  * Add the email to the queue
  */
@@ -38,11 +38,13 @@ if ($queue->push($mail) === false)
     exit();
 }
 
+
 /**
  * Calculate the time taken to execute the script
  */
 $end_time = microtime(true);
 $time = number_format($end_time - $start_time, 5);
+
 
 /**
  * Return to index.php

@@ -17,7 +17,7 @@ class Queue
     /**
      * Class constructor
      *
-     * @param string $path Path to the saved files
+     * @param string $path  Path to the saved files
      *
      * @return void
      */
@@ -29,7 +29,7 @@ class Queue
     /**
      * Send an item to the queue
      *
-     * @param mixed $content The content to be sent
+     * @param mixed $content  The content to be sent
      *
      * @return mixed  The number of bytes written to the queue, or false on failure
      */
