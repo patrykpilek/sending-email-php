@@ -29,5 +29,6 @@
   - [HTML to Text email converter](https://templates.mailchimp.com/resources/html-to-text/)
   - [PHP strip_tags function](https://www.php.net/manual/en/function.strip-tags.php)
 - [ ] sending emails asynchronously: build a basic asynchronous queue from scratch
+  - why it takes a long time to send an email using SMTP
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
 - [ ] third-party email services: using mailgun
