@@ -17,7 +17,7 @@ class Queue
     /**
      * Class constructor
      *
-     * @param string $path  Path to the saved files
+     * @param string $path Path to the saved files
      *
      * @return void
      */
@@ -39,5 +39,34 @@ class Queue
         $data = serialize($content);
 
         return file_put_contents($file, $data);
+    }
+
+    /**
+     * Get the next item from the queue
+     *
+     * @return mixed The item or null if no more items
+     */
+    public function getNextItem()
+    {
+        $filenames = scandir($this->path);
+        $filenames = array_diff($filenames, ['.', '..']);  // remove the dots from Linux environments
+
+        $filename = array_shift($filenames);
+        if ($filename !== null) {
+
+            $file = $this->path . $filename;
+
+            $contents = file_get_contents($file);
+            if ($contents !== false) {
+
+                $object = unserialize($contents);
+                if ($object !== false) {
+
+                    unlink($file);
+
+                    return $object;
+                }
+            }
+        }
     }
 }

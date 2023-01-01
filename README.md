@@ -36,5 +36,6 @@
   - [PHP serialize function](https://www.php.net/manual/en/function.serialize.php)
   - queue emails to be sent later: save emails in text files
   - load all classes using composer's autoloader
+  - send the queued emails
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
 - [ ] third-party email services: using mailgun
