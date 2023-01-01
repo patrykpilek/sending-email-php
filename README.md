@@ -30,5 +30,7 @@
   - [PHP strip_tags function](https://www.php.net/manual/en/function.strip-tags.php)
 - [ ] sending emails asynchronously: build a basic asynchronous queue from scratch
   - why it takes a long time to send an email using SMTP
+  - [Email testing](http://ajaxload.info/)
+  - send email quickly form a web page
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
 - [ ] third-party email services: using mailgun
