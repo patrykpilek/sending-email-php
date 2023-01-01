@@ -32,5 +32,8 @@
   - why it takes a long time to send an email using SMTP
   - [Email testing](http://ajaxload.info/)
   - send email quickly form a web page
+  - [PHP uniqid function](https://www.php.net/manual/en/function.uniqid.php)
+  - [PHP serialize function](https://www.php.net/manual/en/function.serialize.php)
+  - queue emails to be sent later: save emails in text files
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
 - [ ] third-party email services: using mailgun
