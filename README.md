@@ -39,5 +39,6 @@
   - send the queued emails
   - [Cron table expressions editor](https://crontab.guru/)
   - run a php script automatically at a specified time
+  - run the queue processing script using cron
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
 - [ ] third-party email services: using mailgun
