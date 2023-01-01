@@ -37,5 +37,7 @@
   - queue emails to be sent later: save emails in text files
   - load all classes using composer's autoloader
   - send the queued emails
+  - [Cron table expressions editor](https://crontab.guru/)
+  - run a php script automatically at a specified time
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
 - [ ] third-party email services: using mailgun
