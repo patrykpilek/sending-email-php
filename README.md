@@ -56,3 +56,8 @@
   - put the queue code in a separate class
   - process the messages on the queue
 - [ ] third-party email services: using mailgun
+  - [Mailgun](https://www.mailgun.com/)
+  - [Signup for a new Mailgun account](https://signup.mailgun.com/new/signup)
+  - [Send using SMTP or HTTP API](https://documentation.mailgun.com/en/latest/quickstart-sending.html?highlight=send-with-smtp-or-api#send-with-smtp-or-api)
+  - [Verify your domain](https://documentation.mailgun.com/en/latest/quickstart-sending.html?highlight=verify-your-domain#how-to-start-sending-email)
+  - sending email without SMTP: using mailgun
