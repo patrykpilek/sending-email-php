@@ -11,6 +11,8 @@
     <p><?php echo $_GET['time'] ?? ''; ?></p>
 
     <form action="send.php" method="post">
+        <label for="recipient">To:</label>
+        <input name="recipient" id="recipient" placeholder="email address" autofocus />
         <button type="submit">Send</button>
     </form>
 
