@@ -24,7 +24,7 @@ $mg = Mailgun::create(Config::MAILGUN_API_KEY, 'https://api.eu.mailgun.net'); //
 // $mg->messages()->send($domain, $params);
 $mg->messages()->send(Config::MAILGUN_DOMAIN, [
     'from'    => 'sender@example.com',
-    'to'      => 'patryk.pilek@gmail.com',
+    'to'      => $_POST['recipient'],
     'subject' => 'The PHP SDK is awesome!',
     'text'    => 'It is so simple to send a message.'
 ]);

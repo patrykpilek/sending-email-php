@@ -63,3 +63,5 @@
   - sending email without SMTP: using mailgun
   - [Mailgun PHP SDK](https://github.com/mailgun/mailgun-php)
   - send an email using the Mailgun HTTP API
+  - [Mailgun events](https://documentation.mailgun.com/en/latest/api-events.html#events)
+  - track what happens to emails once sent
