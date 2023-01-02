@@ -11,32 +11,30 @@ $start_time = microtime(true);
  */
 require '../vendor/autoload.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
 
 /**
- * Create a new email
+ * Connect to the queue
  */
-$mail = new PHPMailer();
-
-$mail->setFrom('sender@example.com');
-$mail->addAddress('patryk.pilek@gmail.com');
-
-$mail->Subject = 'An email sent from PHP';
-$mail->Body = 'This is a test message';
-
+$queue = new Queue(Config::QUEUE_HOST, Config::QUEUE_PORT, Config::QUEUE_USER, Config::QUEUE_PASSWORD, Config::QUEUE_NAME);
 
 
 /**
- * Add the email to the queue
+ * Send the data to the queue
  */
-$dir = dirname(__DIR__) . '/queue/';
-$queue = new Queue($dir);
+$data = [
+    'from' => 'sender@example.com',
+    'to' => 'recipient@example.com',
+    'subject' => 'An email sent from PHP',
+    'body' => 'Hello! The time is ' . date('H:i:s')
+];
 
-if ($queue->push($mail) === false)
-{
-    echo 'Unable to queue email';
-    exit();
-}
+$queue->publish($data);
+
+
+/**
+ * Close the connection to the RabbitMQ server
+ */
+$queue->disconnect();
 
 
 /**

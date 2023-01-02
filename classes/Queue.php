@@ -4,69 +4,95 @@
  * Queue class
  *
  */
+
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+use MessagePack\Packer;
+
 class Queue
 {
 
     /**
-     * Path to the saved files
+     * RabbitMQ connection
+     *
+     * @var AMQPStreamConnection
+     */
+    protected $connection;
+
+    /**
+     * RabbitMQ connection channel
+     *
+     * @var AMQPChannel
+     */
+    protected $channel;
+
+    /**
+     * Queue name
      *
      * @var string
      */
-    protected $path;
+    protected $name;
 
     /**
      * Class constructor
      *
-     * @param string $path Path to the saved files
+     * @param string $host     RabbitMQ server host
+     * @param int    $port     RabbitMQ server port
+     * @param string $username RabbitMQ server username
+     * @param string $password RabbitMQ server password
+     * @param string $name     Queue name
      *
      * @return void
      */
-    public function __construct($path)
+    public function __construct($host, $port, $username, $password, $name)
     {
-        $this->path = $path;
+        $this->connection = new AMQPStreamConnection($host, $port, $username, $password);
+        $this->channel = $this->connection->channel();
+
+        $this->channel->queue_declare($name, false, false, false, false);
+        $this->name = $name;
     }
 
     /**
-     * Send an item to the queue
+     * Send an item to the queue, packing it into Message Pack format first
      *
-     * @param mixed $content  The content to be sent
+     * @param mixed $data The data to be sent
      *
-     * @return mixed  The number of bytes written to the queue, or false on failure
+     * @return void
      */
-    public function push($content)
+    public function publish($data)
     {
-        $file = $this->path . uniqid('', true);
-        $data = serialize($content);
+        $packer = new Packer();
+        $packed = $packer->pack($data);
 
-        return file_put_contents($file, $data);
+        $message = new AMQPMessage($packed);
+        $this->channel->basic_publish($message, '', $this->name);
     }
 
     /**
-     * Get the next item from the queue
+     * Close the connection and disconnect from the RabbitMQ server
      *
-     * @return mixed The item or null if no more items
+     * @return void
      */
-    public function getNextItem()
+    public function disconnect()
     {
-        $filenames = scandir($this->path);
-        $filenames = array_diff($filenames, ['.', '..']);  // remove the dots from Linux environments
+        $this->channel->close();
+        $this->connection->close();
+    }
 
-        $filename = array_shift($filenames);
-        if ($filename !== null) {
+    /**
+     * Process the items in the queue
+     *
+     * @param callable $callback The data to be sent
+     *
+     * @return void
+     */
+    public function process($callback)
+    {
+        $this->channel->basic_consume($this->name, '', false, true, false, false, $callback);
 
-            $file = $this->path . $filename;
-
-            $contents = file_get_contents($file);
-            if ($contents !== false) {
-
-                $object = unserialize($contents);
-                if ($object !== false) {
-
-                    unlink($file);
-
-                    return $object;
-                }
-            }
+        while(count($this->channel->callbacks)) {
+            $this->channel->wait();
         }
     }
 }
