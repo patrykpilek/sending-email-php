@@ -11,30 +11,23 @@ $start_time = microtime(true);
  */
 require '../vendor/autoload.php';
 
+use Mailgun\Mailgun;
 
 /**
- * Connect to the queue
+ * Send a message using Mailgun
  */
-$queue = new Queue(Config::QUEUE_HOST, Config::QUEUE_PORT, Config::QUEUE_USER, Config::QUEUE_PASSWORD, Config::QUEUE_NAME);
 
+// First, instantiate the SDK with your API credentials
+$mg = Mailgun::create(Config::MAILGUN_API_KEY, 'https://api.eu.mailgun.net'); // For EU servers
 
-/**
- * Send the data to the queue
- */
-$data = [
-    'from' => 'sender@example.com',
-    'to' => 'recipient@example.com',
-    'subject' => 'An email sent from PHP',
-    'body' => 'Hello! The time is ' . date('H:i:s')
-];
-
-$queue->publish($data);
-
-
-/**
- * Close the connection to the RabbitMQ server
- */
-$queue->disconnect();
+// Now, compose and send your message.
+// $mg->messages()->send($domain, $params);
+$mg->messages()->send(Config::MAILGUN_DOMAIN, [
+    'from'    => 'sender@example.com',
+    'to'      => 'patryk.pilek@gmail.com',
+    'subject' => 'The PHP SDK is awesome!',
+    'text'    => 'It is so simple to send a message.'
+]);
 
 
 /**

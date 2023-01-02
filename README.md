@@ -61,3 +61,5 @@
   - [Send using SMTP or HTTP API](https://documentation.mailgun.com/en/latest/quickstart-sending.html?highlight=send-with-smtp-or-api#send-with-smtp-or-api)
   - [Verify your domain](https://documentation.mailgun.com/en/latest/quickstart-sending.html?highlight=verify-your-domain#how-to-start-sending-email)
   - sending email without SMTP: using mailgun
+  - [Mailgun PHP SDK](https://github.com/mailgun/mailgun-php)
+  - send an email using the Mailgun HTTP API
