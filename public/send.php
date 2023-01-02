@@ -13,48 +13,28 @@ require '../vendor/autoload.php';
 
 
 /**
- * Import classes
+ * Connect to the queue
  */
-use PhpAmqpLib\Connection\AMQPStreamConnection;
-use PhpAmqpLib\Message\AMQPMessage;
-use MessagePack\Packer;
+$queue = new Queue(Config::QUEUE_HOST, Config::QUEUE_PORT, Config::QUEUE_USER, Config::QUEUE_PASSWORD, Config::QUEUE_NAME);
 
 
 /**
- * Connect to the RabbitMQ server and queue
- */
-$connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
-$channel = $connection->channel();
-
-$channel->queue_declare('emails', false, false, false, false);
-
-
-/**
- * Pack the data into the Message Pack format
+ * Send the data to the queue
  */
 $data = [
     'from' => 'sender@example.com',
-    'to' => 'patryk.pilek@gmail.com',
+    'to' => 'recipient@example.com',
     'subject' => 'An email sent from PHP',
-    'body' => 'This is a test message from RabbitMQ - CloudAMQP'
+    'body' => 'This is a test message'
 ];
 
-$packer = new Packer();
-$packed = $packer->pack($data);
-
-
-/**
- * Send the message to the queue
- */
-$message = new AMQPMessage($packed);
-$channel->basic_publish($message, '', 'emails');
+$queue->publish($data);
 
 
 /**
  * Close the connection to the RabbitMQ server
  */
-$channel->close();
-$connection->close();
+$queue->disconnect();
 
 
 /**

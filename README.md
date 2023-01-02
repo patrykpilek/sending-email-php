@@ -51,4 +51,7 @@
   - [rybakit/msqpack: A pure PHP implementation of the MessagePack serialization format](https://packagist.org/packages/rybakit/msgpack)
   - install PHP libraries for RabbitMQ and Message Pack with Composer
   - create a queue and publish a message to it
+  - [RabbitMQ Management Plugin](https://www.rabbitmq.com/management.html)
+  - view the messages on the queue
+  - put the queue code in a separate class
 - [ ] third-party email services: using mailgun
