@@ -50,4 +50,5 @@
   - [php-amqplib: php implementation of the AMQP protocol](https://github.com/php-amqplib/php-amqplib)
   - [rybakit/msqpack: A pure PHP implementation of the MessagePack serialization format](https://packagist.org/packages/rybakit/msgpack)
   - install PHP libraries for RabbitMQ and Message Pack with Composer
+  - create a queue and publish a message to it
 - [ ] third-party email services: using mailgun

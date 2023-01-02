@@ -11,32 +11,50 @@ $start_time = microtime(true);
  */
 require '../vendor/autoload.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
 
 /**
- * Create a new email
+ * Import classes
  */
-$mail = new PHPMailer();
-
-$mail->setFrom('sender@example.com');
-$mail->addAddress('patryk.pilek@gmail.com');
-
-$mail->Subject = 'An email sent from PHP';
-$mail->Body = 'This is a test message';
-
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+use MessagePack\Packer;
 
 
 /**
- * Add the email to the queue
+ * Connect to the RabbitMQ server and queue
  */
-$dir = dirname(__DIR__) . '/queue/';
-$queue = new Queue($dir);
+$connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+$channel = $connection->channel();
 
-if ($queue->push($mail) === false)
-{
-    echo 'Unable to queue email';
-    exit();
-}
+$channel->queue_declare('emails', false, false, false, false);
+
+
+/**
+ * Pack the data into the Message Pack format
+ */
+$data = [
+    'from' => 'sender@example.com',
+    'to' => 'patryk.pilek@gmail.com',
+    'subject' => 'An email sent from PHP',
+    'body' => 'This is a test message from RabbitMQ - CloudAMQP'
+];
+
+$packer = new Packer();
+$packed = $packer->pack($data);
+
+
+/**
+ * Send the message to the queue
+ */
+$message = new AMQPMessage($packed);
+$channel->basic_publish($message, '', 'emails');
+
+
+/**
+ * Close the connection to the RabbitMQ server
+ */
+$channel->close();
+$connection->close();
 
 
 /**
