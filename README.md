@@ -41,4 +41,13 @@
   - run a php script automatically at a specified time
   - run the queue processing script using cron
 - [ ] sending emails asynchronously using the RabbitMQ Messaging Server
+  - [RabbitMQ Messaging Software](https://www.rabbitmq.com/)
+  - [Downloading and Installing RabbitMQ](https://www.rabbitmq.com/download.html)
+  - [CloudAMQP - RabbitMQ as a Service](https://www.cloudamqp.com/)
+  - [JSON - JavaScript Object Notation](https://www.json.org/json-en.html)
+  - [MessagePack](https://msgpack.org/)
+  - [Protocol Buffers](https://developers.google.com/protocol-buffers/)
+  - [php-amqplib: php implementation of the AMQP protocol](https://github.com/php-amqplib/php-amqplib)
+  - [rybakit/msqpack: A pure PHP implementation of the MessagePack serialization format](https://packagist.org/packages/rybakit/msgpack)
+  - install PHP libraries for RabbitMQ and Message Pack with Composer
 - [ ] third-party email services: using mailgun
