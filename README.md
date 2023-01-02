@@ -55,7 +55,7 @@
   - view the messages on the queue
   - put the queue code in a separate class
   - process the messages on the queue
-- [ ] third-party email services: using mailgun
+- [x] third-party email services: using mailgun
   - [Mailgun](https://www.mailgun.com/)
   - [Signup for a new Mailgun account](https://signup.mailgun.com/new/signup)
   - [Send using SMTP or HTTP API](https://documentation.mailgun.com/en/latest/quickstart-sending.html?highlight=send-with-smtp-or-api#send-with-smtp-or-api)
@@ -65,3 +65,5 @@
   - send an email using the Mailgun HTTP API
   - [Mailgun events](https://documentation.mailgun.com/en/latest/api-events.html#events)
   - track what happens to emails once sent
+  - [Receiving, Forwarding and Storing Messages with Mailgun](https://documentation.mailgun.com/en/latest/user_manual.html?highlight=receiving%20forwarding%20and%20storing%20messages#routes)
+  - receive email with mailgun
