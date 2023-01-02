@@ -28,7 +28,7 @@
   - add a Plain-text version of an HTML email
   - [HTML to Text email converter](https://templates.mailchimp.com/resources/html-to-text/)
   - [PHP strip_tags function](https://www.php.net/manual/en/function.strip-tags.php)
-- [ ] sending emails asynchronously: build a basic asynchronous queue from scratch
+- [x] sending emails asynchronously: build a basic asynchronous queue from scratch
   - why it takes a long time to send an email using SMTP
   - [Email testing](http://ajaxload.info/)
   - send email quickly form a web page
@@ -40,7 +40,7 @@
   - [Cron table expressions editor](https://crontab.guru/)
   - run a php script automatically at a specified time
   - run the queue processing script using cron
-- [ ] sending emails asynchronously using the RabbitMQ Messaging Server
+- [x] sending emails asynchronously using the RabbitMQ Messaging Server
   - [RabbitMQ Messaging Software](https://www.rabbitmq.com/)
   - [Downloading and Installing RabbitMQ](https://www.rabbitmq.com/download.html)
   - [CloudAMQP - RabbitMQ as a Service](https://www.cloudamqp.com/)
@@ -54,4 +54,5 @@
   - [RabbitMQ Management Plugin](https://www.rabbitmq.com/management.html)
   - view the messages on the queue
   - put the queue code in a separate class
+  - process the messages on the queue
 - [ ] third-party email services: using mailgun

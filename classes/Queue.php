@@ -79,4 +79,20 @@ class Queue
         $this->channel->close();
         $this->connection->close();
     }
+
+    /**
+     * Process the items in the queue
+     *
+     * @param callable $callback The data to be sent
+     *
+     * @return void
+     */
+    public function process($callback)
+    {
+        $this->channel->basic_consume($this->name, '', false, true, false, false, $callback);
+
+        while(count($this->channel->callbacks)) {
+            $this->channel->wait();
+        }
+    }
 }

@@ -25,7 +25,7 @@ $data = [
     'from' => 'sender@example.com',
     'to' => 'recipient@example.com',
     'subject' => 'An email sent from PHP',
-    'body' => 'This is a test message'
+    'body' => 'Hello! The time is ' . date('H:i:s')
 ];
 
 $queue->publish($data);
